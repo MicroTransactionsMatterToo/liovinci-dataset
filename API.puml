@@ -1,0 +1,32 @@
+@startuml
+cloud "Social Media Services" as sms {
+  [Twitter]
+  [Facebook]
+  [Google Plus]
+}
+
+[Custom API]
+
+node "Our Server" {
+  [API In]
+  [API Out]
+  [Internal Data Mining]
+  [Site]
+  [Our mods]
+  [Database]
+}
+
+[Custom API] -up-> [API In]
+[API Out] -up-> [Custom API]
+[Twitter] -left-> [Custom API]
+[Facebook] -left-> [Custom API]
+[Google Plus] -left-> [Custom API]
+[Twitter] -down-> [Internal Data Mining]
+[Facebook] -down-> [Internal Data Mining]
+[Google Plus] -down-> [Internal Data Mining]
+[Internal Data Mining] -> [API Out]
+[API In] -> [Internal Data Mining]
+[Internal Data Mining] -down-> [Database]
+[Database] -up-> [Site]
+[Our mods] -down-> [Database]
+@enduml
